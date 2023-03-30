@@ -36,22 +36,22 @@ bool Transaction::Make(Account& from, Account& to, int sum) {
 
   Credit(to, sum);
 
-  bool success = Debit(to, sum + fee_);
+  bool success = Debit(from, sum + fee_);
   if (!success) to.ChangeBalance(-sum);
 
   SaveToDataBase(from, to, sum);
   return success;
 }
 
-void Transaction::Credit(Account& accout, int sum) {
+void Transaction::Credit(Account& account, int sum) {
   assert(sum > 0);
-  accout.ChangeBalance(sum);
+  account.ChangeBalance(sum);
 }
 
-bool Transaction::Debit(Account& accout, int sum) {
+bool Transaction::Debit(Account& account, int sum) {
   assert(sum > 0);
-  if (accout.GetBalance() > sum) {
-    accout.ChangeBalance(-sum);
+  if (account.GetBalance() > sum) {
+    account.ChangeBalance(-sum);
     return true;
   }
   return false;
