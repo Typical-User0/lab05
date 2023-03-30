@@ -1,3 +1,6 @@
+## Building Status
+[![Build Status](https://app.travis-ci.com/Typical-User0/lab05.svg?branch=master)](https://app.travis-ci.com/Typical-User0/lab05)
+
 ## Laboratory work V
 
 Данная лабораторная работа посвещена изучению фреймворков для тестирования на примере **GTest**
