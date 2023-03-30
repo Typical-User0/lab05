@@ -7,18 +7,24 @@ compiler:
 addons:
   apt:
     sources:
-        - ubuntu-toolchain-r-test
+      - ubuntu-toolchain-r-test
     packages:
       - g++-12
       - clang-14
 
 before_install:
+  sudo apt-get update
   pip install --user cpp-coveralls
 
 
 script:
-    - cmake -DCOVERAGE=1 .
     - cmake -S .
+    - cmake -B build
+    - cmake -D COVERAGE=1 .
     - cmake --build build
     - ./build/test_account
     - ./build/test_transaction
+
+after_success:
+  after_success:
+    - coveralls --root . -E ".*gtest.*" -E ".*CMakeFiles.*"
