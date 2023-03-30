@@ -18,9 +18,8 @@ before_install:
 
 
 script:
-    - mkdir build
-    - cmake -B build
-    - cmake -D COVERAGE=1 .
+    - cmake -H. -B build
+    - cmake -D COVERAGE=1 build
     - cmake --build build
     - ./build/test_account
     - ./build/test_transaction
