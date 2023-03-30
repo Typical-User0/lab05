@@ -24,5 +24,4 @@ script:
   - ./account_test
 
 after_success:
-  after_success:
-    - coveralls --root . -E ".*gtest.*" -E ".*CMakeFiles.*"
+  - coveralls --root . -E ".*gtest.*" -E ".*CMakeFiles.*"
