@@ -18,6 +18,7 @@ before_install:
 
 
 script:
+    - mkdir build
     - cmake -H. -B build
     - cmake -D COVERAGE=1 build
     - cmake --build build
