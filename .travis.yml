@@ -7,7 +7,7 @@ compiler:
 addons:
   apt:
     sources:
-      - ubuntu-toolchain-r-test
+      - ppa:ubuntu-toolchain-r-test
     packages:
       - g++-12
       - clang-14
