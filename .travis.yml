@@ -20,8 +20,8 @@ before_install:
 script:
   - cmake -DCOVERAGE=1 .
   - cmake --build .
-  - ./test_account
-  - ./test_transaction
+  - ./transaction_test
+  - ./account_test
 
 after_success:
   after_success:
