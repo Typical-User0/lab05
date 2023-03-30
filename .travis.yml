@@ -11,12 +11,14 @@ addons:
       - ubuntu-toolchain-r-test
     packages:
       - g++-7
+      - cmake
 
 before_install:
   pip install --user cpp-coveralls
 
 
 script:
+    - mkdir build
     - cmake -B build
     - cmake -D COVERAGE=1 .
     - cmake --build build
