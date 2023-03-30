@@ -1,0 +1,24 @@
+language: cpp
+
+compiler:
+  - gcc
+  - clang
+
+addons:
+  apt:
+    sources:
+        - ubuntu-toolchain-r-test
+    packages:
+      - g++-12
+      - clang-14
+
+before_install:
+  pip install --user cpp-coveralls
+
+
+script:
+    - cmake -DCOVERAGE=1 .
+    - cmake -S .
+    - cmake --build build
+    - ./build/test_account
+    - ./build/test_transaction

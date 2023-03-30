@@ -15,15 +15,10 @@ add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/banking)
 target_include_directories(account_test PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/banking)
 target_include_directories(transaction_test PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/banking)
 
-target_link_libraries(transaction_test PRIVATE gtest ${CMAKE_THREAD_LIBS_INIT} gtest_main gmock_main banking)
-target_link_libraries(account_test PRIVATE gtest ${CMAKE_THREAD_LIBS_INIT} gtest_main gmock_main banking)
 
 
-if(BUILD_TESTS)
-  enable_testing()
-  add_subdirectory(gtest)
-  file(GLOB \${PROJECT_NAME}_TEST_SOURCES tests/*.cpp)
-  add_executable(check \${\${PROJECT_NAME}_TEST_SOURCES})
-  target_link_libraries(check \${PROJECT_NAME} gtest_main)
-  add_test(NAME check COMMAND check)
+
+if(COVERAGE)
+  target_link_libraries(transaction_test PRIVATE gtest ${CMAKE_THREAD_LIBS_INIT} gtest_main gmock_main banking)
+  target_link_libraries(account_test PRIVATE gtest ${CMAKE_THREAD_LIBS_INIT} gtest_main gmock_main banking)
 endif()
